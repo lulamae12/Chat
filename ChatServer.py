@@ -5,10 +5,11 @@ serverSocket = socket.socket()#create new serverside socket
 serverHostname = socket.gethostname()#get hostname of server
 port = 12345 #set connection port
 serverSocket.bind((serverHostname, port))#bind to port
-ConnectionMessage = (serverHostname + "has Connected.")
+
 serverSocket.listen(5)
 client, address = serverSocket.accept()#establish connection with client
-print("Connected to:", address)
+ConnectionMessage = ("Connected to:" + str(address))
+print(serverHostname + "has Connected.")
 message = ConnectionMessage
 client.sendto(message.encode(),(serverHostname, port))#send message to client
 while True:
